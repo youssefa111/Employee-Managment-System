@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- Create navigation bar ( Header ) -->
+    <nav class="navbar navbar-dark bg-dark navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <h1 style="color: white">Login</h1>
+        </div>
+      </div>
+    </nav>
+    <br />
+    <br />
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <h2>User Login Page</h2>
+          <form th:action="@{/login}" method="post">
+            <!-- error message  -->
+            <div th:if="${param.error}">
+              <div class="alert alert-danger">Invalid username or password</div>
+            </div>
+            <!-- logout message  -->
+            <div th:if="${param.logout}">
+              <div class="alert alert-info">You have been logged out</div>
+            </div>
+
+            <div class="form-group">
+              <label for="username"> Username: </label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                name="username"
+                placeholder="Enter Email ID"
+                autofocus="autofocus"
+              />
+            </div>
+            <div class="form-group">
+              <label for="password"> Password: </label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="Enter Password"
+                autofocus="autofocus"
+              />
+            </div>
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                  <input
+                    type="submit"
+                    name="login-submit"
+                    id="login-submit"
+                    class="form-control btn btn-primary"
+                    value="Log In"
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="form-group">
+            <span
+              >New user?
+              <a href="/" th:href="@{/registration}">Register here</a></span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
